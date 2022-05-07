@@ -1,0 +1,2 @@
+# -XX:+PrintGCDetails
+java  -jar -XX:+UseZGC -XX:+UseNUMA -Xms8G -Xmx8G -XX:ReservedCodeCacheSize=128m -XX:InitialCodeCacheSize=128m -XX:ConcGCThreads=2 -XX:ParallelGCThreads=6 -XX:ZCollectionInterval=120 -XX:ZAllocationSpikeTolerance=5  ./target/spring-boot-api-0.0.1-SNAPSHOT.jar

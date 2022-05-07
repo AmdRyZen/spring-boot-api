@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.mltt.mapper.FUserMapper">
+    <sql id="baseSql">
+        <if test="model.id != '' and model.id != null">
+            AND id = #{model.id}
+        </if>
+    </sql>
+
+    <select id="getUser" resultType="com.mltt.biz.vo.FUserVo">
+        select * from pirate_tv.f_user where 1 = 1 limit 5
+    </select>
+</mapper>

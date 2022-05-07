@@ -1,0 +1,38 @@
+server:
+  tomcat:
+    uri-encoding: UTF-8
+    #最小线程数
+    min-spare-threads: 500
+    #最大线程数
+    max-threads: 2500
+    #最大链接数
+    max-connections: 100000
+    #最大等待队列长度
+    accept-count: 1000
+    #请求头最大长度kb
+    max-http-header-size: 1048576
+    #请求个数超过这个数，强制关闭掉socket链接
+    max-kepp-alive-requests: 300
+    #下次请求过来之前，socket链接保持多久
+    keep-alive-time-out: 60000
+    #请请求体最大长度kb
+    #max-http-post-size: 2097152
+  #服务http端口
+  port: 9191
+  #链接建立超时时间
+  connection-timeout: 12000
+  servlet:
+    #访问根路径
+    context-path: /
+
+spring:
+  application:
+    name: spring-boot-api
+  profiles:
+    active: dev
+
+mybatis:
+  mapper-locations: classpath:mapper/*.xml
+  type-aliases-package: com.mltt.model
+  configuration:
+    map-underscore-to-camel-case: true
