@@ -17,10 +17,9 @@ server:
     keep-alive-time-out: 60000
     #请请求体最大长度kb
     #max-http-post-size: 2097152
+    connection-timeout: 12000
   #服务http端口
   port: 9191
-  #链接建立超时时间
-  connection-timeout: 12000
   servlet:
     #访问根路径
     context-path: /

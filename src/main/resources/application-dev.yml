@@ -34,8 +34,6 @@ spring:
       max-pool-prepared-statement-per-connection-size: -1
       # 合并多个DruidDataSource的监控数据
       use-global-data-source-stat: true
-      # 通过connectProperties属性来打开mergeSql功能；慢SQL记录
-      connect-properties: druid.stat.mergeSql=true;druid.stat.slowSqlMillis=5000
 
       stat-view-servlet:
         enabled: true
@@ -62,5 +60,26 @@ spring:
         max-wait: -1
     timeout: 6000
 
-  debug:
-    false
+#rocketmq配置信息
+rocketmq:
+  #nameservice服务器地址（多个以英文逗号隔开）
+  name-server: 127.0.0.1:9876
+  #生产者配置
+  producer:
+    #组名
+    group: spring-producer-group
+    #topic
+    topic: spring-topic
+    #sync tag(同步消息tag)
+    sync-tag: spring-sync-tags
+    #async tag(异步消息tag)
+    async-tag: spring-async-tags
+    #oneway tag(单向消息tag)
+    oneway-tag: spring-oneway-tags
+
+
+logging:
+  #file:
+    #path: /tmp/mq-product-service.log
+  level:
+    root: INFO
