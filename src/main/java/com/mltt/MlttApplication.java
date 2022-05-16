@@ -12,6 +12,6 @@ import springfox.documentation.oas.annotations.EnableOpenApi;
 public class MlttApplication {
 	public static void main(String[] args) {
 		ConfigurableApplicationContext app =  SpringApplication.run(MlttApplication.class, args);
-		System.out.println("app.getEnvironment() = " + app.getEnvironment());
+		//System.out.println("app.getEnvironment() = " + app.getEnvironment());
 	}
 }

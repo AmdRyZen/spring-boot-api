@@ -66,6 +66,15 @@ rocketmq:
   name-server: 127.0.0.1:9876
   #生产者配置
   producer:
+    isOnOff: on
+    # 发送同一类消息设置为同一个group，保证唯一默认不需要设置，rocketmq会使用ip@pid（pid代表jvm名字）作为唯一标识
+    groupName: ${spring.application.name}
+    # 消息最大长度 默认 1024 * 4 (4M)
+    maxMessageSize: 4096
+    # 发送消息失败重试次数，默认2
+    retryTimesWhenSendFailed: 2
+    # 发送消息超时时间，默认 3000
+    sendMsgTimeOut: 3000
     #组名
     group: spring-producer-group
     #topic
@@ -76,6 +85,13 @@ rocketmq:
     async-tag: spring-async-tags
     #oneway tag(单向消息tag)
     oneway-tag: spring-oneway-tags
+
+  # 消费者
+  consumer:
+    isOnOff: on
+    # 消费者线程数据量
+    consumeThreadMin: 2
+    consumeThreadMax: 16
 
 
 logging:
