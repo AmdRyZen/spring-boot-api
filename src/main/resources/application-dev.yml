@@ -93,6 +93,26 @@ rocketmq:
     consumeThreadMin: 2
     consumeThreadMax: 16
 
+## Nacos registry address
+dubbo:
+  application: #当前这个应用的信息
+    name: ${spring.application.name} #应用名
+  protocol: # 服务采用的协议 基本默认未dubbo协议(netty)
+    name: dubbo
+    port: 20880 #dubbo服务暴露的端口
+  registry: #注册相关信息
+    #address: zookeeper://10.250.204.106:2181 #注册中心配置
+    address: nacos://localhost:8848 #注册中心配置
+    timeout: 30000 # 到注册中心的超时时间
+  provider:
+    retries: -1 #重试次数 consumer
+    delay: -1 #延迟到spring容器加载之后
+  scan: #需要发布的服务接口实现类扫描路径
+    base-packages: com.mltt.service.impl
+  consumer:
+    timeout: 50000 # 访问服务超时时间
+    check: false
+
 
 logging:
   #file:
