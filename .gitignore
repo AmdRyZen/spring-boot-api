@@ -34,3 +34,5 @@ build/
 
 *.DS_Store
 nohup.out
+logs
+derby.log

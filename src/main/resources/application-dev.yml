@@ -115,7 +115,7 @@ dubbo:
 
 
 logging:
-  #file:
-    #path: /tmp/mq-product-service.log
+  file:
+    path: ./logs
   level:
     root: INFO
