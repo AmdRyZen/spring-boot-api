@@ -29,6 +29,9 @@ spring:
     name: spring-boot-api
   profiles:
     active: dev
+  jackson:
+    time-zone: GMT+8
+    date-format: yyyy-MM-dd HH:mm:ss
 
 mybatis:
   mapper-locations: classpath:mapper/*.xml

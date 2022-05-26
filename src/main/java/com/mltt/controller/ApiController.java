@@ -1,5 +1,6 @@
 package com.mltt.controller;
 
+import com.alibaba.nacos.api.config.annotation.NacosValue;
 import com.mltt.biz.dto.ApiDto;
 import com.mltt.exception.ServiceException;
 import com.mltt.service.ApiService;
@@ -8,6 +9,7 @@ import com.mltt.utils.ApiResultUtils;
 import com.mltt.utils.HttpClientUtils;
 import com.mltt.utils.SecurityUtil;
 import org.apache.dubbo.config.annotation.DubboReference;
+
 import org.springframework.boot.configurationprocessor.json.JSONObject;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -25,6 +27,14 @@ public class ApiController {
     ApiService apiService;
     @Resource
     JdbcTemplate jdbcTemplate;
+    @NacosValue(value = "${username.aa:none}", autoRefreshed = true)
+    private String username;
+
+    @RequestMapping("/config")
+    public String config() {
+        return this.username;
+    }
+
     @DubboReference(version = "1.0", group = "dubboApi", interfaceClass = DubboApiService.class)
     public DubboApiService dubboApiService;
 

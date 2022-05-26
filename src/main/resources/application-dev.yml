@@ -97,6 +97,9 @@ rocketmq:
 dubbo:
   application: #当前这个应用的信息
     name: ${spring.application.name} #应用名
+    # 禁用QOS同一台机器可能会有端口冲突现象
+    qos-enable: false
+    qos-accept-foreign-ip: false
   protocol: # 服务采用的协议 基本默认未dubbo协议(netty)
     name: dubbo
     port: 20880 #dubbo服务暴露的端口
@@ -104,6 +107,11 @@ dubbo:
     #address: zookeeper://10.250.204.106:2181 #注册中心配置
     address: nacos://localhost:8848 #注册中心配置
     timeout: 30000 # 到注册中心的超时时间
+    # 配置 namespace
+    #parameters:
+      #namespace: 2077e067-9cd7-4ca5-95de-b3907fd19ed2
+      # 服务分组
+    #group: dev
   provider:
     retries: -1 #重试次数 consumer
     delay: -1 #延迟到spring容器加载之后
@@ -113,6 +121,24 @@ dubbo:
     timeout: 50000 # 访问服务超时时间
     check: false
 
+nacos:
+  config:  # 这里的优先级高于扩展配置ext-config:
+    bootstrap:
+      enable: true #开启配置预加载功能
+      log-enable: false
+    server-addr: 127.0.0.1:8848 # 主配置服务器地址
+    group: ${spring.profiles.active} # 主配置 group-id  这里约定环境参数
+    namespace: 2077e067-9cd7-4ca5-95de-b3907fd19ed2 # 主配置
+    data-id: spring-boot-api-dev.yml  # 主配置 data-id
+    type: yaml # 主配置 配置文件类型
+    remote-first: true  # true 代表nacos配置中心的配置优先级高 否则本地配置优先级高 默认false
+    max-retry: 2 # 主配置 最大重试次数
+    auto-refresh: true # 主配置 开启自动刷新
+    config-retry-time: 3000  # 主配置 重试时间
+    config-long-poll-timeout: 6000   # 主配置 配置监听长轮询超时时间
+    enable-remote-sync-config: false  # 主配置 开启注册监听器预加载配置服务（除非特殊业务需求，否则不推荐打开该参数）
+    username: nacos
+    password: nacos
 
 logging:
   file:
