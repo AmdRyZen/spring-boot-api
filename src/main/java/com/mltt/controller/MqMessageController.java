@@ -5,6 +5,8 @@ import com.mltt.utils.ApiResultUtils;
 import org.apache.rocketmq.client.producer.SendCallback;
 import org.apache.rocketmq.client.producer.SendResult;
 import org.apache.rocketmq.client.producer.TransactionSendResult;
+import org.apache.rocketmq.common.message.Message;
+import org.apache.rocketmq.remoting.common.RemotingHelper;
 import org.apache.rocketmq.spring.core.RocketMQTemplate;
 import org.apache.rocketmq.spring.support.RocketMQHeaders;
 import org.slf4j.Logger;
@@ -15,6 +17,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import javax.annotation.Resource;
+import java.io.UnsupportedEncodingException;
 import java.util.UUID;
 
 @RestController
@@ -48,9 +51,9 @@ public class MqMessageController {
 
 
     @RequestMapping("/pushAsyncMessage")
-    public ApiResultUtils pushAsyncMessage() throws ServiceException {
+    public ApiResultUtils pushAsyncMessage() throws ServiceException, UnsupportedEncodingException {
         System.out.println("syncTag = " + syncTag);
-        rocketMQTemplate.asyncSend(syncTag, "send async message!", new SendCallback() {
+        rocketMQTemplate.asyncSend(syncTag, MessageBuilder.withPayload("hello, 这是延迟消息").build(), new SendCallback() {
             @Override
             public void onSuccess(SendResult sendResult) {
                 log.info("send async successful");
@@ -60,7 +63,7 @@ public class MqMessageController {
             public void onException(Throwable throwable) {
                 log.info("send fail; {}", throwable.getMessage());
             }
-        });
+        }, 3000, 3);
 
         return ApiResultUtils.success(2L);
     }

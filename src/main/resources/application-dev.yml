@@ -76,7 +76,7 @@ rocketmq:
     # 发送消息超时时间，默认 3000
     sendMsgTimeOut: 3000
     #组名
-    group: spring-producer-group
+    group: ${spring.application.name}
     #topic
     topic: spring-topic
     #sync tag(同步消息tag)
@@ -89,6 +89,7 @@ rocketmq:
   # 消费者
   consumer:
     isOnOff: on
+    group: ${spring.application.name}
     # 消费者线程数据量
     consumeThreadMin: 2
     consumeThreadMax: 16
