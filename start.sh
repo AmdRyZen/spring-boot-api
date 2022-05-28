@@ -12,3 +12,7 @@ sleep 3
 
 nohup sh ../rocketmq-4.9.3/bin/mqnamesrv &
 nohup sh ../rocketmq-4.9.3/bin/mqbroker -n localhost:9876 autoCreateTopicEnable=true &
+
+
+sleep 1
+java -jar ../spring-boot-api-rpc/target/spring-boot-api-rpc-0.0.1-SNAPSHOT.jar

@@ -1,6 +1,7 @@
 package com.mltt.controller;
 
 import com.alibaba.nacos.api.config.annotation.NacosValue;
+import com.mltt.Annotation.CheckLoginAnnotation;
 import com.mltt.biz.dto.ApiDto;
 import com.mltt.exception.ServiceException;
 import com.mltt.service.ApiService;
@@ -38,6 +39,7 @@ public class ApiController {
     @DubboReference(version = "1.0", group = "dubboApi", interfaceClass = DubboApiService.class)
     public DubboApiService dubboApiService;
 
+    @CheckLoginAnnotation(desc = "@Annotation")
     @RequestMapping("/hello")
     public String hello() {
         return apiService.hello();
