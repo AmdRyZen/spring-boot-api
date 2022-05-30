@@ -1,8 +1,8 @@
 package com.mltt.service;
 
+import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.service.IService;
 import com.mltt.biz.model.FUser;
-import com.mltt.biz.vo.FUserVo;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -13,5 +13,5 @@ public interface ApiService extends IService<FUser> {
 
     void doTaskOne() throws InterruptedException;
 
-    List<FUserVo> getUser();
+    IPage<FUser> getUser();
 }

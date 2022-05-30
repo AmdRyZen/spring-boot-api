@@ -41,6 +41,12 @@
 			<artifactId>mybatis-plus-boot-starter</artifactId>
 			<version>3.5.1</version>
 		</dependency>
+		<!-- https://mvnrepository.com/artifact/com.baomidou/mybatis-plus-generator -->
+		<dependency>
+			<groupId>com.baomidou</groupId>
+			<artifactId>mybatis-plus-generator</artifactId>
+			<version>3.5.2</version>
+		</dependency>
 		<!-- https://mvnrepository.com/artifact/mysql/mysql-connector-java -->
 		<dependency>
 			<groupId>mysql</groupId>

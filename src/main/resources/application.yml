@@ -38,3 +38,7 @@ mybatis:
   type-aliases-package: com.mltt.model
   configuration:
     map-underscore-to-camel-case: true
+mybatis-plus:
+  configuration:
+    cache-enabled: true
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
