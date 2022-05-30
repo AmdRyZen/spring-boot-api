@@ -41,7 +41,8 @@ public class ApiController {
 
     @CheckLoginAnnotation(desc = "@Annotation")
     @RequestMapping("/hello")
-    public String hello() {
+    public String hello() throws InterruptedException {
+        apiService.doTaskOne();
         return apiService.hello();
     }
 

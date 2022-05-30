@@ -11,5 +11,7 @@ import java.util.List;
 public interface ApiService extends IService<FUser> {
     String hello();
 
+    void doTaskOne() throws InterruptedException;
+
     List<FUserVo> getUser();
 }

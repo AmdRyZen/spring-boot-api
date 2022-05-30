@@ -7,7 +7,9 @@ import com.mltt.exception.ServiceException;
 import com.mltt.mapper.FUserMapper;
 import com.mltt.service.ApiService;
 import com.mltt.utils.StringUtils;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.data.redis.core.RedisTemplate;
+import org.springframework.scheduling.annotation.Async;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -16,6 +18,7 @@ import java.util.List;
 import java.util.Optional;
 
 @Service
+@Slf4j
 public class ApiServiceImpl extends ServiceImpl<FUserMapper, FUser> implements ApiService {
     @Resource
     FUserMapper fUserMapper;
@@ -25,6 +28,15 @@ public class ApiServiceImpl extends ServiceImpl<FUserMapper, FUser> implements A
     @Override
     public String hello() {
         return StringUtils.filterEmoji("你好中国🇨🇳");
+    }
+
+    @Async("threadPoolTaskScheduler")
+    public void doTaskOne() throws ServiceException, InterruptedException {
+        Thread.sleep(1000);
+        System.out.println("开始作任务...");
+        long start = System.currentTimeMillis();
+        long end = System.currentTimeMillis();
+        System.out.println("完成任务一，耗时：" + (end - start) + "毫秒");
     }
 
     @Override
