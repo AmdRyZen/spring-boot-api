@@ -1,4 +1,4 @@
-package com.mltt.biz.bean;
+package com.mltt.bean;
 
 import com.fasterxml.jackson.core.JsonGenerator;
 import com.fasterxml.jackson.databind.JsonSerializer;

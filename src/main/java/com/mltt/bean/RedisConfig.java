@@ -1,4 +1,4 @@
-package com.mltt.biz.bean;
+package com.mltt.bean;
 
 import com.fasterxml.jackson.annotation.JsonAutoDetect;
 import com.fasterxml.jackson.annotation.PropertyAccessor;

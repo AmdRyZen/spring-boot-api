@@ -1,4 +1,4 @@
-package com.mltt.biz.bean;
+package com.mltt.bean;
 
 /*
 @Configuration
