@@ -3,6 +3,7 @@ package com.mltt.controller;
 import com.alibaba.nacos.api.config.annotation.NacosValue;
 import com.mltt.Annotation.CheckLoginAnnotation;
 import com.mltt.biz.dto.ApiDto;
+import com.mltt.biz.model.FUser;
 import com.mltt.exception.ServiceException;
 import com.mltt.service.ApiService;
 import com.mltt.service.DubboApiService;
@@ -10,7 +11,6 @@ import com.mltt.utils.ApiResultUtils;
 import com.mltt.utils.HttpClientUtils;
 import com.mltt.utils.SecurityUtil;
 import org.apache.dubbo.config.annotation.DubboReference;
-
 import org.springframework.boot.configurationprocessor.json.JSONObject;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -47,8 +47,8 @@ public class ApiController {
     }
 
     @RequestMapping("/dubbo")
-    public String dubbo() {
-        return dubboApiService.hello();
+    public FUser dubbo() {
+        return dubboApiService.getFuserList();
     }
 
     @RequestMapping("/port")

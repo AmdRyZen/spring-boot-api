@@ -3,9 +3,11 @@ package com.mltt.biz.model;
 import lombok.Builder;
 import lombok.Data;
 
+import java.io.Serializable;
+
 @Data
 @Builder
-public class FUser {
+public class FUser implements Serializable {
     private Integer id;
     private String username;
     private String phone;
