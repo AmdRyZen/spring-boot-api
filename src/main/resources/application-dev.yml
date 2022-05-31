@@ -101,9 +101,9 @@ dubbo:
     # 禁用QOS同一台机器可能会有端口冲突现象
     qos-enable: false
     qos-accept-foreign-ip: false
-    register-mode: instance
+    #register-mode: instance
   protocol: # 服务采用的协议 基本默认未dubbo协议(netty)
-    name: dubbo
+    name: tri
     port: -1 #dubbo服务暴露的端口
   registry: #注册相关信息
     #address: zookeeper://10.250.204.106:2181 #注册中心配置
