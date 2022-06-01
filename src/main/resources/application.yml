@@ -1,10 +1,6 @@
 server:
   tomcat:
     uri-encoding: UTF-8
-    #最小线程数
-    min-spare-threads: 500
-    #最大线程数
-    max-threads: 2500
     #最大链接数
     max-connections: 100000
     #最大等待队列长度
@@ -18,6 +14,9 @@ server:
     #请请求体最大长度kb
     #max-http-post-size: 2097152
     connection-timeout: 12000
+    threads:
+      min-spare: 500
+      max: 2500
   #服务http端口
   port: 9191
   servlet:

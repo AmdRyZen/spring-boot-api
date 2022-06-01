@@ -22,7 +22,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 @RestController
-@RequestMapping("/api")
+@RequestMapping("/boot/api")
 public class ApiController {
     @Resource
     ApiService apiService;
