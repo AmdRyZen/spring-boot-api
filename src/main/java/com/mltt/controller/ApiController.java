@@ -13,6 +13,9 @@ import com.mltt.utils.SecurityUtil;
 import org.apache.dubbo.config.annotation.DubboReference;
 import org.springframework.boot.configurationprocessor.json.JSONObject;
 import org.springframework.jdbc.core.JdbcTemplate;
+import org.springframework.scheduling.annotation.Async;
+import org.springframework.scheduling.annotation.AsyncResult;
+import org.springframework.util.concurrent.ListenableFuture;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -20,6 +23,7 @@ import org.springframework.web.bind.annotation.RestController;
 import javax.annotation.Resource;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.concurrent.ExecutionException;
 
 @RestController
 @RequestMapping("/boot/api")
@@ -38,6 +42,12 @@ public class ApiController {
 
     @DubboReference(version = "1.0", group = "dubboApi", interfaceClass = DubboApiService.class)
     public DubboApiService dubboApiService;
+
+    @RequestMapping("/async")
+    public ApiResultUtils async() throws ServiceException, ExecutionException, InterruptedException {
+        ListenableFuture<String> result = apiService.async("xxx");
+        return ApiResultUtils.success(result.get());
+    }
 
     @CheckLoginAnnotation(desc = "@Annotation")
     @RequestMapping("/hello")

@@ -15,4 +15,6 @@ nohup sh ../rocketmq-4.9.3/bin/mqbroker -n localhost:9876 autoCreateTopicEnable=
 
 
 sleep 1
-java -jar ../spring-boot-api-rpc/target/spring-boot-api-rpc-0.0.1-SNAPSHOT.jar
+nohup java -jar ../spring-boot-api-rpc/target/spring-boot-api-rpc-0.0.1-SNAPSHOT.jar &
+nohup java -jar ../spring-cloud-gateway/target/spring-cloud-gateway-0.0.1-SNAPSHOT.jar &
+

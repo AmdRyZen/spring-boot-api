@@ -12,10 +12,15 @@ import com.mltt.utils.StringUtils;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.scheduling.annotation.Async;
+import org.springframework.scheduling.annotation.AsyncResult;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.util.concurrent.ListenableFuture;
 
 import javax.annotation.Resource;
+import java.util.List;
+import java.util.concurrent.CopyOnWriteArrayList;
+import java.util.concurrent.ExecutionException;
 
 @Service
 @Slf4j
@@ -30,14 +35,29 @@ public class ApiServiceImpl extends ServiceImpl<FUserMapper, FUser> implements A
         return StringUtils.filterEmoji("你好中国🇨🇳");
     }
 
-    @Async("threadPoolTaskScheduler")
-    public void doTaskOne() throws ServiceException, InterruptedException {
-        Thread.sleep(1000);
+    @Async("asyncExecutor")
+    public void doTaskOne() throws ServiceException {
         System.out.println("开始作任务...");
         long start = System.currentTimeMillis();
         long end = System.currentTimeMillis();
         System.out.println("完成任务一，耗时：" + (end - start) + "毫秒");
     }
+
+    // 线程安全的list
+    private static final List<String> lis = new CopyOnWriteArrayList<>();
+    @Async("asyncExecutor")
+    public ListenableFuture<String> async(String message) {
+        log.info("当前线程得到的message={}，然后我还会沉睡1秒，睡完返回message", message);
+        try {
+            Thread.sleep(30);
+            lis.add(message);
+        } catch (InterruptedException e) {
+            log.error("do something error: ", e);
+        }
+        log.info("当前线程共享的final列表{}", lis);
+        return new AsyncResult<>("message");
+    }
+
 
     @Override
     @Transactional(rollbackFor={ServiceException.class})
