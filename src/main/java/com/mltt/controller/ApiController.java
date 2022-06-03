@@ -26,7 +26,7 @@ import java.util.Map;
 import java.util.concurrent.ExecutionException;
 
 @RestController
-@RequestMapping("/boot/api")
+@RequestMapping("/api")
 public class ApiController {
     @Resource
     ApiService apiService;

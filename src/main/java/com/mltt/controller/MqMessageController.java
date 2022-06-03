@@ -21,7 +21,7 @@ import java.io.UnsupportedEncodingException;
 import java.util.UUID;
 
 @RestController
-@RequestMapping("/boot/mqMessage")
+@RequestMapping("/mqMessage")
 public class MqMessageController {
     private static final Logger log = LoggerFactory.getLogger(MqMessageController.class);
 

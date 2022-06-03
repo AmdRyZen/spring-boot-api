@@ -16,7 +16,6 @@
 	<properties>
 		<java.version>1.8</java.version>
 		<repackage.classifier/>
-		<spring-cloud.version>2021.0.1</spring-cloud.version>
 		<logback.version>1.2.10</logback.version>
 		<!-- 根据相关依赖决定是否配置最新依赖 -->
 		<log4j2.version>2.17.1</log4j2.version>
@@ -144,13 +143,19 @@
 			<artifactId>nacos-config-spring-boot-starter</artifactId>
 			<version>0.2.10</version>
 		</dependency>
+		<!-- https://mvnrepository.com/artifact/com.alibaba.cloud/spring-cloud-starter-alibaba-nacos-discovery -->
+		<dependency>
+			<groupId>com.alibaba.cloud</groupId>
+			<artifactId>spring-cloud-starter-alibaba-nacos-discovery</artifactId>
+			<version>2021.1</version>
+		</dependency>
 	</dependencies>
 	<dependencyManagement>
 		<dependencies>
 			<dependency>
 				<groupId>org.springframework.cloud</groupId>
 				<artifactId>spring-cloud-dependencies</artifactId>
-				<version>${spring-cloud.version}</version>
+				<version>Hoxton.SR12</version>
 				<type>pom</type>
 				<scope>import</scope>
 			</dependency>

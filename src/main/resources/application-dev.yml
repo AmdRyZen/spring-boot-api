@@ -43,6 +43,7 @@ spring:
         enabled: true
         url-pattern: /druid/*
         exclusions: /druid/*,*.js,*.gif,*.jpg,*.png,*.css,*.ico
+
   jdbc:
     template:
       query-timeout: 1
@@ -101,7 +102,7 @@ dubbo:
     # 禁用QOS同一台机器可能会有端口冲突现象
     qos-enable: false
     qos-accept-foreign-ip: false
-    #register-mode: instance
+    register-mode: instance
   protocol: # 服务采用的协议 基本默认未dubbo协议(netty)
     name: tri
     port: -1 #dubbo服务暴露的端口
@@ -130,7 +131,7 @@ nacos:
       log-enable: false
     server-addr: 127.0.0.1:8848 # 主配置服务器地址
     group: ${spring.profiles.active} # 主配置 group-id  这里约定环境参数
-    namespace: 2077e067-9cd7-4ca5-95de-b3907fd19ed2 # 主配置
+    #namespace: 2077e067-9cd7-4ca5-95de-b3907fd19ed2 # 主配置
     data-id: spring-boot-api-dev.yml  # 主配置 data-id
     type: yaml # 主配置 配置文件类型
     remote-first: true  # true 代表nacos配置中心的配置优先级高 否则本地配置优先级高 默认false
