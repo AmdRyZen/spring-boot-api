@@ -10,6 +10,7 @@ public class ApiResultUtils<T> implements Serializable {
     private Integer code;
     private String msg;
     private T data;
+    private String traceId;
 
     public static <T> ApiResultUtils<T> success(T data) {
         return ApiResultUtils.success(StatusCodeEnum.SC200.getMsg(), data);

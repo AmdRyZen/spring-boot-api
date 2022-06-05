@@ -62,6 +62,16 @@ spring:
     nacos:
       discovery:
         group: SPRING_CLOUD
+  sleuth:
+    sampler:
+      probability: 1.0
+  zipkin:
+    base-url: http://127.0.0.1:9411/
+    sender:
+      type: web
+    enabled: true
+    service:
+      name: ${spring.application.name}
 
 #rocketmq配置信息
 rocketmq:
@@ -107,6 +117,7 @@ dubbo:
     register-mode: instance
   protocol: # 服务采用的协议 基本默认未dubbo协议(netty)
     name: tri
+    #name: dubbo
     port: -1 #dubbo服务暴露的端口
   registry: #注册相关信息
     #address: zookeeper://10.250.204.106:2181 #注册中心配置
@@ -120,11 +131,13 @@ dubbo:
   provider:
     retries: -1 #重试次数 consumer
     delay: -1 #延迟到spring容器加载之后
+    filter: tracing
   scan: #需要发布的服务接口实现类扫描路径
     base-packages: com.mltt.service.impl
   consumer:
     timeout: 50000 # 访问服务超时时间
     check: false
+    filter: tracing
 
 nacos:
   config:  # 这里的优先级高于扩展配置ext-config:
