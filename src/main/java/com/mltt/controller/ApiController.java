@@ -7,7 +7,6 @@ import com.mltt.biz.model.FUser;
 import com.mltt.exception.ServiceException;
 import com.mltt.service.ApiService;
 import com.mltt.service.DubboApiService;
-import com.mltt.service.FeignApiService;
 import com.mltt.utils.ApiResultUtils;
 import com.mltt.utils.HttpClientUtils;
 import com.mltt.utils.SecurityUtil;
@@ -16,8 +15,6 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.boot.configurationprocessor.json.JSONObject;
 import org.springframework.jdbc.core.JdbcTemplate;
-import org.springframework.scheduling.annotation.Async;
-import org.springframework.scheduling.annotation.AsyncResult;
 import org.springframework.util.concurrent.ListenableFuture;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -46,12 +43,6 @@ public class ApiController {
 
     @DubboReference(version = "1.0", group = "dubboApi", interfaceClass = DubboApiService.class)
     public DubboApiService dubboApiService;
-
-    @RequestMapping("/feign")
-    public ApiResultUtils<String> feign() throws ServiceException {
-        log.info("boot-api-feign");
-        return ApiResultUtils.success("feignApiService.getFuserList()");
-    }
 
     @RequestMapping("/async")
     public ApiResultUtils async() throws ServiceException, ExecutionException, InterruptedException {
