@@ -17,7 +17,7 @@ spring:
       # 申请连接的时候检测，如果空闲时间大于timeBetweenEvictionRunsMillis，执行validationQuery检测连接是否有效。
       test-while-idle: true
       # 既作为检测的间隔时间又作为testWhileIdel执行的依据
-      time-between-eviction-runs-millis: 60000
+      time-between-eviction-runs-millis: 600000
       # 销毁线程时检测当前连接的最后活动时间和当前时间差大于该值时，关闭当前连接(配置连接在池中的最小生存时间)
       min-evictable-idle-time-millis: 30000
       # 用来检测数据库连接是否有效的sql 必须是一个查询语句(oracle中为 select 1 from dual)
@@ -61,7 +61,9 @@ spring:
   cloud:
     nacos:
       discovery:
-        group: SPRING_CLOUD
+        group: gateway
+        server-addr: localhost:8848
+        register-enabled: true
   sleuth:
     sampler:
       probability: 1.0
@@ -132,12 +134,14 @@ dubbo:
     retries: -1 #重试次数 consumer
     delay: -1 #延迟到spring容器加载之后
     filter: tracing
+    group: dubbo
   scan: #需要发布的服务接口实现类扫描路径
     base-packages: com.mltt.service.impl
   consumer:
     timeout: 50000 # 访问服务超时时间
     check: false
     filter: tracing
+    group: dubbo
 
 nacos:
   config:  # 这里的优先级高于扩展配置ext-config:
@@ -157,6 +161,15 @@ nacos:
     enable-remote-sync-config: false  # 主配置 开启注册监听器预加载配置服务（除非特殊业务需求，否则不推荐打开该参数）
     username: nacos
     password: nacos
+
+feign:
+  hystrix:
+    enabled: true
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
 
 logging:
   file:
