@@ -3,6 +3,7 @@ package com.mltt.controller;
 import com.alibaba.nacos.api.config.annotation.NacosValue;
 import com.mltt.Annotation.CheckLoginAnnotation;
 import com.mltt.biz.dto.ApiDto;
+import com.mltt.biz.dto.DubboDto;
 import com.mltt.biz.model.FUser;
 import com.mltt.exception.ServiceException;
 import com.mltt.service.ApiService;
@@ -59,7 +60,8 @@ public class ApiController {
 
     @RequestMapping("/dubbo")
     public FUser dubbo() {
-        return dubboApiService.getFuserList();
+        DubboDto dto = new DubboDto();
+        return dubboApiService.getFuserList(dto);
     }
 
     @RequestMapping("/port")

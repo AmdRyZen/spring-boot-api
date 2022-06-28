@@ -1,5 +1,6 @@
 package com.mltt.feign;
 
+import com.mltt.biz.dto.DubboDto;
 import com.mltt.biz.model.FUser;
 import com.mltt.exception.ServiceException;
 import com.mltt.service.DubboApiService;
@@ -22,6 +23,7 @@ public class FeignController {
     @RequestMapping("/feign")
     public FUser feign() throws ServiceException {
         log.info("boot-api-feign");
-        return dubboApiService.getFuserList();
+        DubboDto dto = new DubboDto();
+        return dubboApiService.getFuserList(dto);
     }
 }

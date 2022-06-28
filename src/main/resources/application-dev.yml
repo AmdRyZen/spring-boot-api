@@ -117,6 +117,7 @@ dubbo:
     qos-enable: false
     qos-accept-foreign-ip: false
     register-mode: instance
+    protocol: tri
   protocol: # 服务采用的协议 基本默认未dubbo协议(netty)
     name: tri
     #name: dubbo

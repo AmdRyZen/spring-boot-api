@@ -1,6 +1,9 @@
 package com.mltt.service.impl;
 
+import com.github.benmanes.caffeine.cache.Cache;
+import com.mltt.biz.dto.DubboDto;
 import com.mltt.biz.model.FUser;
+import com.mltt.biz.vo.FUserVo;
 import com.mltt.exception.ServiceException;
 import com.mltt.mapper.FUserMapper;
 import com.mltt.service.DubboApiService;
@@ -10,16 +13,39 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import javax.annotation.Resource;
+import java.util.HashMap;
 
 @DubboService(version = "1.0", group = "dubboApi", interfaceClass = DubboApiService.class)
 public class DubboApiServiceImpl implements DubboApiService {
     private static final Logger log = LoggerFactory.getLogger(DubboApiServiceImpl.class);
+    /**
+     * 模拟数据库存储数据
+     */
+    private HashMap<Integer, FUserVo> userInfoMap = new HashMap<>();
+
+    @Resource
+    Cache<String, Object> caffeineCache;
+
     @Resource
     FUserMapper fUserMapper;
     @Override
-    public FUser getFuserList() {
-        log.info("getFuserList");
-        FUser fUserVo = fUserMapper.selectById(1L);
+    public FUser getFuserList(DubboDto dubboDto) {
+       /* FUser fUserVo = fUserMapper.selectById(1L);*/
+        log.info("traceId = {}, getFuserList", dubboDto.getTraceId());
+        // 先从缓存读取
+        caffeineCache.getIfPresent(1L);
+        FUser fUserVo = (FUser) caffeineCache.asMap().get(String.valueOf(1L));
+        if (fUserVo != null){
+            log.info("get caffeineCache");
+            return fUserVo;
+        }
+        // 如果缓存中不存在，则从库中查找
+        log.info("read Mysql");
+        fUserVo = fUserMapper.selectById(1L);
+        // 如果用户信息不为空，则加入缓存
+        if (fUserVo != null){
+            caffeineCache.put(String.valueOf(fUserVo.getId()),fUserVo);
+        }
         return fUserVo;
     }
 
