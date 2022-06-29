@@ -2,6 +2,8 @@ package com.mltt.controller;
 
 import com.alibaba.nacos.api.config.annotation.NacosValue;
 import com.mltt.Annotation.CheckLoginAnnotation;
+import com.mltt.Annotation.DynamicDataSource;
+import com.mltt.bean.DataSourceNames;
 import com.mltt.biz.dto.ApiDto;
 import com.mltt.biz.dto.DubboDto;
 import com.mltt.biz.model.FUser;
@@ -22,6 +24,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import javax.annotation.Resource;
+import javax.sql.DataSource;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.concurrent.ExecutionException;
@@ -37,8 +40,13 @@ public class ApiController {
     @NacosValue(value = "${username.aa:none}", autoRefreshed = true)
     private String username;
 
+    @Resource
+    private DataSource dataSource;
+
     @RequestMapping("/config")
+    @DynamicDataSource(name = DataSourceNames.MASTER)
     public String config() {
+        System.out.println(dataSource.getClass().getName());
         return this.username;
     }
 
@@ -59,6 +67,7 @@ public class ApiController {
     }
 
     @RequestMapping("/dubbo")
+    @DynamicDataSource(name = DataSourceNames.SLAVE)
     public FUser dubbo() {
         DubboDto dto = new DubboDto();
         return dubboApiService.getFuserList(dto);

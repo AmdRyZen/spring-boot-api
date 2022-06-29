@@ -1,11 +1,19 @@
 spring:
+  main:
+    allow-bean-definition-overriding: true
+    allow-circular-references: true
   datasource:
-    url: jdbc:mysql://127.0.0.1:3306/pirate_tv?useUnicode=true&characterEncoding=utf8&zeroDateTimeBehavior=convertToNull&allowMultiQueries=true
-    username: root
-    password:
     driver-class-name: com.mysql.cj.jdbc.Driver
     type: com.alibaba.druid.pool.DruidDataSource
     druid:
+      master:
+        url: jdbc:mysql://127.0.0.1:3306/pirate_tv?useUnicode=true&characterEncoding=utf8&zeroDateTimeBehavior=convertToNull&allowMultiQueries=true
+        username: root
+        password:
+      slave:
+        url: jdbc:mysql://127.0.0.1:3306/pirate_tv?useUnicode=true&characterEncoding=utf8&zeroDateTimeBehavior=convertToNull&allowMultiQueries=true
+        username: root
+        password:
       # 初始化时建立物理连接的个数
       initial-size: 20
       # 连接池的最小空闲数量
