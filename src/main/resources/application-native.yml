@@ -158,9 +158,9 @@ nacos:
       enable: true #开启配置预加载功能
       log-enable: false
     server-addr: 127.0.0.1:8848 # 主配置服务器地址
-    group: ${spring.profiles.active} # 主配置 group-id  这里约定环境参数
+    group: dev # 主配置 group-id  这里约定环境参数
     #namespace: 2077e067-9cd7-4ca5-95de-b3907fd19ed2 # 主配置
-    data-id: spring-boot-api-dev.yml  # 主配置 data-id
+    data-id: spring-boot-api-native.yml  # 主配置 data-id
     type: yaml # 主配置 配置文件类型
     remote-first: true  # true 代表nacos配置中心的配置优先级高 否则本地配置优先级高 默认false
     max-retry: 2 # 主配置 最大重试次数
