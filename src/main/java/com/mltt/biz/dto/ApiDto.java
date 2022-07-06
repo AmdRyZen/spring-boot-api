@@ -7,4 +7,5 @@ import java.io.Serializable;
 @Data
 public class ApiDto implements Serializable {
     private Integer port;
+    private String name;
 }

@@ -1,5 +1,6 @@
 package com.mltt.controller;
 
+import com.alibaba.fastjson2.JSON;
 import com.alibaba.nacos.api.config.annotation.NacosValue;
 import com.mltt.Annotation.CheckLoginAnnotation;
 import com.mltt.Annotation.DynamicDataSource;
@@ -42,6 +43,21 @@ public class ApiController {
 
     @Resource
     private DataSource dataSource;
+
+    @RequestMapping("/fastjson2")
+    public String fastjson2() {
+        ApiDto apiDto = new ApiDto();
+        apiDto.setPort(1);
+        apiDto.setName("a");
+        for (int i = 0; i < 1000; i++) {
+            JSON.toJSONString(apiDto);
+        }
+        long startTime = System.nanoTime(); //获取开始时间
+        String data = JSON.toJSONString(apiDto);
+        long endTime = System.nanoTime(); //获取结束时间
+        System.out.println("程序运行时间： " +(endTime-startTime)+ "ns");
+        return data;
+    }
 
     @RequestMapping("/config")
     @DynamicDataSource(name = DataSourceNames.MASTER)
