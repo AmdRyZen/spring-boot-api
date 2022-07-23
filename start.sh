@@ -1,8 +1,8 @@
 # -XX:+PrintGCDetails
 #java -jar -XX:+UseZGC -XX:+UseNUMA -Xms8G -Xmx8G -XX:ReservedCodeCacheSize=128m -XX:InitialCodeCacheSize=128m -XX:ConcGCThreads=2 -XX:ParallelGCThreads=6 -XX:ZCollectionInterval=120 -XX:ZAllocationSpikeTolerance=5  ./target/spring-boot-api-0.0.1-SNAPSHOT.jar
 
-sh ../nacos/bin/shutdown.sh
-sh ../nacos/bin/startup.sh -m standalone
+sudo sh ../nacos/bin/shutdown.sh
+sudo sh ../nacos/bin/startup.sh -m standalone
 
 
 sh ../rocketmq-all-4.9.4-bin-release/bin/mqshutdown namesrv

@@ -51,7 +51,7 @@ public class MqMessageController {
 
 
     @RequestMapping("/pushAsyncMessage")
-    public ApiResultUtils pushAsyncMessage() throws ServiceException, UnsupportedEncodingException {
+    public ApiResultUtils pushAsyncMessage() throws ServiceException {
         System.out.println("syncTag = " + syncTag);
         rocketMQTemplate.asyncSend(syncTag, MessageBuilder.withPayload("hello, 这是延迟消息").build(), new SendCallback() {
             @Override

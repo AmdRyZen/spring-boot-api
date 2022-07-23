@@ -126,6 +126,7 @@ dubbo:
     qos-accept-foreign-ip: false
     register-mode: instance
     protocol: tri
+    metadata-service-port: -1
   protocol: # 服务采用的协议 基本默认未dubbo协议(netty)
     name: tri
     #name: dubbo
@@ -140,7 +141,7 @@ dubbo:
       # 服务分组
     #group: dev
   provider:
-    retries: -1 #重试次数 consumer
+    retries: 3 #重试次数 consumer
     delay: -1 #延迟到spring容器加载之后
     filter: tracing
     group: dubbo

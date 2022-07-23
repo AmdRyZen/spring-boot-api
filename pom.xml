@@ -5,7 +5,7 @@
 	<parent>
 		<groupId>org.springframework.boot</groupId>
 		<artifactId>spring-boot-starter-parent</artifactId>
-		<version>2.3.12.RELEASE</version>
+		<version>2.7.2</version>
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>com.mltt</groupId>
@@ -16,9 +16,9 @@
 	<properties>
 		<java.version>1.8</java.version>
 		<repackage.classifier/>
-		<logback.version>1.2.10</logback.version>
+		<!--<logback.version>1.2.10</logback.version>-->
 		<!-- 根据相关依赖决定是否配置最新依赖 -->
-		<log4j2.version>2.17.1</log4j2.version>
+		<!--<log4j2.version>2.17.1</log4j2.version>-->
 	</properties>
 	<dependencies>
 		<dependency>
@@ -38,7 +38,7 @@
 		<dependency>
 			<groupId>com.baomidou</groupId>
 			<artifactId>mybatis-plus-boot-starter</artifactId>
-			<version>3.5.1</version>
+			<version>3.5.2</version>
 		</dependency>
 		<!-- https://mvnrepository.com/artifact/com.baomidou/mybatis-plus-generator -->
 		<dependency>
@@ -55,7 +55,7 @@
 		<dependency>
 			<groupId>com.alibaba</groupId>
 			<artifactId>druid-spring-boot-starter</artifactId>
-			<version>1.2.8</version>
+			<version>1.2.9</version>
 		</dependency>
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
@@ -77,7 +77,7 @@
 		<dependency>
 			<groupId>org.apache.dubbo</groupId>
 			<artifactId>dubbo-registry-nacos</artifactId>
-			<version>3.0.9</version>
+			<version>3.0.10</version>
 			<exclusions>
 				<exclusion>
 					<groupId>org.apache.dubbo</groupId>
@@ -97,13 +97,13 @@
 		<dependency>
 			<groupId>org.apache.dubbo</groupId>
 			<artifactId>dubbo-spring-boot-starter</artifactId>
-			<version>3.0.9</version>
+			<version>3.0.10</version>
 		</dependency>
 		<!-- https://mvnrepository.com/artifact/org.apache.dubbo/dubbo-rpc-triple -->
 		<dependency>
 			<groupId>org.apache.dubbo</groupId>
 			<artifactId>dubbo-rpc-triple</artifactId>
-			<version>3.0.9</version>
+			<version>3.0.10</version>
 			<exclusions>
 				<exclusion>
 					<groupId>org.apache.dubbo</groupId>
@@ -123,7 +123,6 @@
 		<dependency>
 			<groupId>org.springframework</groupId>
 			<artifactId>spring-context-support</artifactId>
-			<version>5.3.20</version>
 		</dependency>
 		<!-- https://mvnrepository.com/artifact/org.apache.curator/curator-recipes -->
 		<dependency>
@@ -141,13 +140,13 @@
 		<dependency>
 			<groupId>com.alibaba.boot</groupId>
 			<artifactId>nacos-config-spring-boot-starter</artifactId>
-			<version>0.2.10</version>
+			<version>0.2.12</version>
 		</dependency>
 		<!-- https://mvnrepository.com/artifact/com.alibaba.cloud/spring-cloud-starter-alibaba-nacos-discovery -->
 		<dependency>
 			<groupId>com.alibaba.cloud</groupId>
 			<artifactId>spring-cloud-starter-alibaba-nacos-discovery</artifactId>
-			<version>2.2.7.RELEASE</version>
+			<version>2021.1</version>
 		</dependency>
 		<!-- https://mvnrepository.com/artifact/org.springframework.cloud/spring-cloud-starter-sleuth -->
 		<dependency>
@@ -162,16 +161,12 @@
 		<dependency>
 			<groupId>org.springframework.cloud</groupId>
 			<artifactId>spring-cloud-starter-zipkin</artifactId>
+			<version>2.2.8.RELEASE</version>
 		</dependency>
 		<!-- https://mvnrepository.com/artifact/org.springframework.cloud/spring-cloud-starter-openfeign -->
 		<dependency>
 			<groupId>org.springframework.cloud</groupId>
 			<artifactId>spring-cloud-starter-openfeign</artifactId>
-		</dependency>
-		<!-- https://mvnrepository.com/artifact/org.springframework.cloud/spring-cloud-starter-netflix-ribbon -->
-		<dependency>
-			<groupId>org.springframework.cloud</groupId>
-			<artifactId>spring-cloud-starter-netflix-ribbon</artifactId>
 		</dependency>
 		<!-- https://mvnrepository.com/artifact/org.springframework.boot/spring-boot-starter-cache -->
 		<dependency>
@@ -194,20 +189,24 @@
 			<artifactId>fastjson2</artifactId>
 			<version>2.0.8</version>
 		</dependency>
-
-		<!-- https://mvnrepository.com/artifact/com.alibaba.cloud/spring-cloud-starter-alibaba-seata -->
-		<!--<dependency>
-			<groupId>com.alibaba.cloud</groupId>
-			<artifactId>spring-cloud-starter-alibaba-seata</artifactId>
-			<version>2.2.8.RELEASE</version>
-		</dependency>-->
+		<dependency>
+			<groupId>org.jetbrains</groupId>
+			<artifactId>annotations</artifactId>
+			<version>23.0.0</version>
+			<scope>compile</scope>
+		</dependency>
+		<!-- https://mvnrepository.com/artifact/org.springframework.cloud/spring-cloud-starter-loadbalancer -->
+		<dependency>
+			<groupId>org.springframework.cloud</groupId>
+			<artifactId>spring-cloud-starter-loadbalancer</artifactId>
+		</dependency>
 	</dependencies>
 	<dependencyManagement>
 		<dependencies>
 			<dependency>
 				<groupId>org.springframework.cloud</groupId>
 				<artifactId>spring-cloud-dependencies</artifactId>
-				<version>Hoxton.SR12</version>
+				<version>2021.0.3</version>
 				<type>pom</type>
 				<scope>import</scope>
 			</dependency>

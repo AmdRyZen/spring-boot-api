@@ -34,7 +34,7 @@ public class ApiServiceImpl extends ServiceImpl<FUserMapper, FUser> implements A
         return StringUtils.filterEmoji("你好中国🇨🇳");
     }
 
-    @Async("asyncExecutor")
+    @Async("asyncServiceExecutor")
     public void doTaskOne() throws ServiceException {
         System.out.println("开始作任务...");
         long start = System.currentTimeMillis();
@@ -44,7 +44,7 @@ public class ApiServiceImpl extends ServiceImpl<FUserMapper, FUser> implements A
 
     // 线程安全的list
     private static final List<String> lis = new CopyOnWriteArrayList<>();
-    @Async("asyncExecutor")
+    @Async("asyncServiceExecutor")
     public ListenableFuture<String> async(String message) {
         log.info("当前线程得到的message={}，然后我还会沉睡1秒，睡完返回message", message);
         try {

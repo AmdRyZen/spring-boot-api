@@ -23,6 +23,11 @@ server:
     #访问根路径
     context-path: /
 
+management:
+  info:
+    os:
+      enabled: true
+
 spring:
   application:
     name: spring-boot-api
