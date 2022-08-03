@@ -14,7 +14,7 @@ nohup sh ../rocketmq-all-4.9.4-bin-release/bin/mqnamesrv &
 nohup sh ../rocketmq-all-4.9.4-bin-release/bin/mqbroker -n localhost:9876 autoCreateTopicEnable=true &
 
 sleep 1
-java -jar ../zipkin/zipkin.jar
+nohup java -jar ../zipkin/zipkin.jar &
 
 
 sleep 1
