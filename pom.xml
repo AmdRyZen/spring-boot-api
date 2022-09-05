@@ -41,7 +41,7 @@
 		<dependency>
 			<groupId>com.baomidou</groupId>
 			<artifactId>mybatis-plus-generator</artifactId>
-			<version>3.5.2</version>
+			<version>3.5.3</version>
 		</dependency>
 		<!-- https://mvnrepository.com/artifact/mysql/mysql-connector-java -->
 		<dependency>
@@ -52,7 +52,7 @@
 		<dependency>
 			<groupId>com.alibaba</groupId>
 			<artifactId>druid-spring-boot-starter</artifactId>
-			<version>1.2.9</version>
+			<version>1.2.11</version>
 		</dependency>
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
@@ -74,7 +74,7 @@
 		<dependency>
 			<groupId>org.apache.dubbo</groupId>
 			<artifactId>dubbo-registry-nacos</artifactId>
-			<version>3.0.10</version>
+			<version>3.1.0</version>
 			<exclusions>
 				<exclusion>
 					<groupId>org.apache.dubbo</groupId>
@@ -94,13 +94,13 @@
 		<dependency>
 			<groupId>org.apache.dubbo</groupId>
 			<artifactId>dubbo-spring-boot-starter</artifactId>
-			<version>3.0.10</version>
+			<version>3.1.0</version>
 		</dependency>
 		<!-- https://mvnrepository.com/artifact/org.apache.dubbo/dubbo-rpc-triple -->
 		<dependency>
 			<groupId>org.apache.dubbo</groupId>
 			<artifactId>dubbo-rpc-triple</artifactId>
-			<version>3.0.10</version>
+			<version>3.1.0</version>
 			<exclusions>
 				<exclusion>
 					<groupId>org.apache.dubbo</groupId>
