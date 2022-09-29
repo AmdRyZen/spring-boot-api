@@ -5,13 +5,13 @@ sudo sh ../nacos/bin/shutdown.sh
 sudo sh ../nacos/bin/startup.sh -m standalone
 
 
-sh ../rocketmq-all-4.9.4-bin-release/bin/mqshutdown namesrv
-sh ../rocketmq-all-4.9.4-bin-release/bin/mqshutdown broker
+sh ../rocketmq-all-5.0.0-bin-release/bin/mqshutdown namesrv
+sh ../rocketmq-all-5.0.0-bin-release/bin/mqshutdown broker
 
 sleep 3
 
-nohup sh ../rocketmq-all-4.9.4-bin-release/bin/mqnamesrv &
-nohup sh ../rocketmq-all-4.9.4-bin-release/bin/mqbroker -n localhost:9876 autoCreateTopicEnable=true &
+nohup sh ../rocketmq-all-5.0.0-bin-release/bin/mqnamesrv &
+nohup sh ../rocketmq-all-5.0.0-bin-release/bin/mqbroker -n localhost:9876 autoCreateTopicEnable=true &
 
 sleep 1
 nohup java -jar ../zipkin/zipkin.jar &
