@@ -80,7 +80,7 @@
 		<dependency>
 			<groupId>org.apache.dubbo</groupId>
 			<artifactId>dubbo-registry-nacos</artifactId>
-			<version>3.1.0</version>
+			<version>3.1.1</version>
 			<exclusions>
 				<exclusion>
 					<groupId>org.apache.dubbo</groupId>
@@ -100,13 +100,13 @@
 		<dependency>
 			<groupId>org.apache.dubbo</groupId>
 			<artifactId>dubbo-spring-boot-starter</artifactId>
-			<version>3.1.0</version>
+			<version>3.1.1</version>
 		</dependency>
 		<!-- https://mvnrepository.com/artifact/org.apache.dubbo/dubbo-rpc-triple -->
 		<dependency>
 			<groupId>org.apache.dubbo</groupId>
 			<artifactId>dubbo-rpc-triple</artifactId>
-			<version>3.1.0</version>
+			<version>3.1.1</version>
 			<exclusions>
 				<exclusion>
 					<groupId>org.apache.dubbo</groupId>
@@ -189,7 +189,7 @@
 		<dependency>
 			<groupId>com.alibaba.fastjson2</groupId>
 			<artifactId>fastjson2</artifactId>
-			<version>2.0.14</version>
+			<version>2.0.15</version>
 		</dependency>
 		<dependency>
 			<groupId>org.jetbrains</groupId>
