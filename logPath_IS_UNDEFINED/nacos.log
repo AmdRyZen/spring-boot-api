@@ -1,8 +1,0 @@
-2023-04-08 18:55:22,900 WARN [ConfigServer-HttpClientManager] Start destroying NacosRestTemplate
-
-2023-04-08 18:55:22,900 WARN [ThreadPoolManager] Start destroying ThreadPool
-
-2023-04-08 18:55:22,900 WARN [ThreadPoolManager] Destruction of the end
-
-2023-04-08 18:55:22,900 WARN [HttpClientBeanHolder] Start destroying common HttpClient
-
