@@ -70,7 +70,7 @@ public class ApiController {
     public DubboApiService dubboApiService;
 
     @RequestMapping("/async")
-    public ApiResultUtils async() throws ServiceException, ExecutionException, InterruptedException {
+    public ApiResultUtils<String> async() throws ServiceException, ExecutionException, InterruptedException {
         ListenableFuture<String> result = apiService.async("xxx");
         return ApiResultUtils.success(result.get());
     }
