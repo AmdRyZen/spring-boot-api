@@ -46,14 +46,14 @@ public class ApiController {
 
     @RequestMapping("/fastjson2")
     public String fastjson2() {
-        ApiDto apiDto = new ApiDto();
-        apiDto.setPort(1);
-        apiDto.setName("a");
-        for (int i = 0; i < 1000; i++) {
-            JSON.toJSONString(apiDto);
-        }
         long startTime = System.nanoTime(); //获取开始时间
-        String data = JSON.toJSONString(apiDto);
+        String data = "";
+        for (int i = 0; i < 1000; i++) {
+            ApiDto apiDto = new ApiDto();
+            apiDto.setPort(1);
+            apiDto.setName("a");
+            data = JSON.toJSONString(apiDto);
+        }
         long endTime = System.nanoTime(); //获取结束时间
         System.out.println("程序运行时间： " +(endTime-startTime)+ "ns");
         return data;
